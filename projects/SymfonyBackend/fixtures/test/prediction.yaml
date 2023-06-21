@@ -1,0 +1,17 @@
+App\Entity\Prediction:
+    prediction_1:
+        __factory:
+            'App\Repository\PredictionRepository::createPrediction':
+                - '@round_1'
+                - 2
+    prediction_2:
+        __factory:
+            'App\Repository\PredictionRepository::createPrediction':
+                - '@round_2'
+                - 0
+    prediction_3:
+        __factory:
+            'App\Repository\PredictionRepository::createPrediction':
+                - '@round_3'
+                - 1
+

@@ -1,0 +1,38 @@
+App\Entity\Round:
+    round_{1..5}:
+        __factory:
+            'App\Repository\RoundRepository::createRound':
+                - '@player_<current()>'
+                - 1
+                - 5
+    round_6:
+        __factory:
+            'App\Repository\RoundRepository::createRound':
+                - '@player_1'
+                - 2
+                - 4
+    round_7:
+            __factory:
+                'App\Repository\RoundRepository::createRound':
+                    - '@player_2'
+                    - 2
+                    - 4
+    round_8:
+            __factory:
+                'App\Repository\RoundRepository::createRound':
+                    - '@player_3'
+                    - 2
+                    - 4
+    round_9:
+            __factory:
+                'App\Repository\RoundRepository::createRound':
+                    - '@player_4'
+                    - 2
+                    - 4
+    round_10:
+            __factory:
+                'App\Repository\RoundRepository::createRound':
+                    - '@player_5'
+                    - 2
+                    - 4
+

@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
+
+body {
+    font-family: 'Odibee Sans', cursive;
+}
+
+.App{
+    height: 100vh !important;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.not_clickable {
+    filter: grayscale(50%);
+    cursor: not-allowed;
+}
+
+.fill-y {
+    height: 85vh !important;
+}
+.profile_pic{
+    max-width: 48px;
+}
+.min-vh-25{
+    height: 25vh !important;
+}
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.game_card {
+    max-width: 64px;
+    min-width: 32px;
+}
+
+.game_card_played {
+    max-width: 18.5%;
+    min-width:  100% !important;
+    height: 100% !important;
+}
+
+.h-40 {
+    height: 40% !important;
+}
+
+.h-35 {
+    height: 35% !important;
+}
+
+.h-33 {
+    height: 33% !important;
+}
+
+.h-30 {
+    height: 30% !important;
+}
+
+.h-20 {
+    height: 20% !important;
+}
+
+.card_played_div{
+    max-width: 64px;
+    min-width: 32px;
+}
+.oponent_game_card{
+    max-width: 64px;
+    min-width: 32px;
+}
+/*.profile_pic {*/
+/*    width: 32px;*/
+/*}*/
+
+.loader_bg {
+    top:0 !important;
+    left: 0 !important;
+    position: absolute !important;
+    justify-content: center;
+    align-items: center;
+    display: flex !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 100 !important;
+    cursor: wait;
+}
+.loader {
+    opacity: 100% !important;
+    z-index: 100 !important;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card_player_img{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+}
+
+.rotate-izq-90{
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+.rotate-der-90{
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+
+

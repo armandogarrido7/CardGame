@@ -1,0 +1,22 @@
+App\Entity\Card:
+    card_{1..12}:
+        __factory:
+            'App\Repository\CardRepository::createCard':
+                - '<((int) (($current) % 12)+ 1)>'
+                - 'Golds'
+    card_{13..25}:
+            __factory:
+                'App\Repository\CardRepository::createCard':
+                    - '<((int) (($current) % 12)+ 1)>'
+                    - 'Clubs'
+    card_{25..36}:
+            __factory:
+                'App\Repository\CardRepository::createCard':
+                    - '<((int) (($current) % 12)+ 1)>'
+                    - 'Swords'
+    card_{37..48}:
+            __factory:
+                'App\Repository\CardRepository::createCard':
+                    - '<((int) (($current) % 12)+ 1)>'
+                    - 'Cups'
+

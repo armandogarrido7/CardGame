@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: ./docker/php
+      args:
+        UID: "1000"
+        GID: "1000"
+    volumes:
+      - ./projects:/var/www
+    networks:
+      - backend
+    environment:
+      - XDEBUG_REMOTE_HOST=172.18.0.1
+      - XDEBUG_REMOTE_PORT=9999
+      - IDE_KEY=project
+      - PHP_IDE_CONFIG=serverName=XDebug
+
+  nginx:
+    image: nginx:1.17.4-alpine
+    volumes:
+      - ./docker/nginx/sites-enabled:/etc/nginx/conf.d
+      - ./projects:/var/www
+    ports:
+      - "80:80"
+    networks:
+      - backend
+
+  postgres:
+    image: postgres:12.0-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+  mercure:
+    image: dunglas/mercure
+    restart: unless-stopped
+    environment:
+      SERVER_NAME: ':80'
+      MERCURE_PUBLISHER_JWT_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdfX0.tcvDMwCGwnwUcm3v_NGBbYjuipuo6kKRCKG_Mv9QTJc'
+#      MERCURE_SUBSCRIBER_JWT_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdfX0.tcvDMwCGwnwUcm3v_NGBbYjuipuo6kKRCKG_Mv9QTJc'
+      MERCURE_JWT_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdfX0.tcvDMwCGwnwUcm3v_NGBbYjuipuo6kKRCKG_Mv9QTJc
+      ALLOW_ANONYMOUS: 1
+      MERCURE_EXTRA_DIRECTIVES: |-
+        cors_origins "*"
+        anonymous
+    command: caddy run --config /etc/caddy/Caddyfile.dev
+    ports:
+      - "4000:80"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: "bridge"

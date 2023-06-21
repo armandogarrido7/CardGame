@@ -1,0 +1,12 @@
+App\Entity\Player:
+    player_{1..5}:
+        __factory:
+            'App\Repository\PlayerRepository::createPlayer':
+                - '@account_<current()>'
+                - '@game_1'
+    player_{6..10}:
+        __factory:
+            'App\Repository\PlayerRepository::createPlayer':
+                - '@account_<current()>'
+                - '@game_2'
+

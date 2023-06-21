@@ -1,0 +1,16 @@
+App\Entity\Account:
+    account_1:
+      __factory:
+          'App\Repository\AccountRepository::createAccount':
+              email: "armandogarrido@aircury.com"
+              username: "armandoaircury"
+              password: "password"
+              name: "Armando Garrido"
+    account_{2..25}:
+        __factory:
+            'App\Repository\AccountRepository::createAccount':
+                - <email()>
+                - <username()>
+                - <password()>
+                - <name()>
+
